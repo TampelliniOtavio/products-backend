@@ -3,11 +3,11 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   HttpCode,
   HttpStatus,
+  Put,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -43,7 +43,7 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   @ApiResponse({ type: Product, status: HttpStatus.OK })
   @ApiResponse({ type: ProductNotFound, status: HttpStatus.NOT_FOUND })
   @ApiResponse({ type: ProductBadRequest, status: HttpStatus.BAD_REQUEST })
