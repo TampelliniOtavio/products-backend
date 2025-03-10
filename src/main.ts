@@ -16,7 +16,12 @@ async function bootstrap() {
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT ?? 3000;
+  await app.listen(port);
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`Abra a Documentação em http://localhost:${port}/api`);
+  }
 }
 
 bootstrap().catch((err) => console.error(err));
