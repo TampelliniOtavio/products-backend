@@ -1,0 +1,10 @@
+services:
+
+  database:
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MYSQL_DATABASE : products_schema
+    ports:
+      - 3306:3306
